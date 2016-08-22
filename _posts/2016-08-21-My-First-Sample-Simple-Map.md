@@ -123,7 +123,7 @@ docker cp r_workbench:/home/rstudio/Abastecimento1.geojson ~/Downloads/
 
 You can test the generated file at: http://geojson.io/
 20160821.SampleGeoJSON.png
-![GEOJSON Sample]({{url}}/images/20160821.SampleGeoJSON.png)
+![GEOJSON Sample]({{site.url}}/images/20160821.SampleGeoJSON.png)
 
 
 Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
@@ -154,7 +154,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
     // load geojson and do stuff in a callback function...
     //Fixed projection to be closer to what we see on GeoSampa
-    d3.json("{{url}}/articlesData/Abastecimento1.geojson", function(error, data){
+    d3.json("{{site.url}}/articlesData/Abastecimento1.geojson", function(error, data){
         // console.log the data
         console.log(data);
 
