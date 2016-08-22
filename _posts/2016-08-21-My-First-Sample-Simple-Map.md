@@ -143,8 +143,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 <div id="viz"></div>
 <script>
 
-/* code reused from the following stackoverflow question:
-              http://stackoverflow.com/questions/14492284/center-a-map-in-d3-given-a-geojson-object */
+
     var width = 900,
         height = 900;
     console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
@@ -203,14 +202,14 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
             .translate(t);
 
 
-      /*  // calculate and draw a bounding box for the geojson */
+
         svg.append("rect")
             .attr('width', width)
             .attr('height', height)
             .style('stroke', 'black')
             .style('fill', '#dfd');
 
-      /*  // draw the svg of both the geojson and bounding box */
+
         svg.selectAll("path").data(data.features).enter().append("path")
             .attr("d", path)
             .style("fill", "#009926")
@@ -218,6 +217,12 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
             .style("stroke", "#009926")
 
     });
+
+    /* code reused from the following stackoverflow question:
+                  http://stackoverflow.com/questions/14492284/center-a-map-in-d3-given-a-geojson-object
+ // draw the svg of both the geojson and bounding box
+// calculate and draw a bounding box for the geojson 
+                  */
 
 </script>
 
