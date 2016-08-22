@@ -163,7 +163,13 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
     //https://raw.githubusercontent.com/alignedleft/d3-book/master/chapter_12/
 
-
+    console.log( $.get('https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson',
+                       function(data) {
+                         //alert(data);
+                         console.log(data);
+                                    }
+                      )
+    )
     //this not works on github pages.. not sure why yet
     //d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",
     d3.json("https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson",
