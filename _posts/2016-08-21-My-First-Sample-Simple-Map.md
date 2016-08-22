@@ -130,11 +130,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
 # D3.JS Rendering Section
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://d3js.org/d3-collection.v1.min.js"></script>
-<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
-<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
-<script src="https://d3js.org/d3-request.v1.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <style> /* set the CSS */
 #viz {
     margin: 0;
@@ -153,39 +149,36 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
         height = 900;
     console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
 
+/*
     $.get('https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson',
-                      function(data) {                        
+                      function(data) {
                         console.log(data);
                                    }
                      )
+                     */
 
     var svg = d3.select("#viz").append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("class", "svg");
 
+/*
     // load geojson and do stuff in a callback function...
-    //Fixed projection to be closer to what we see on GeoSampa
+    //Fixed projection to be closer to what we see on GeoSampa*/
     console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
+/*
+    //https://raw.githubusercontent.com/alignedleft/d3-book/master/chapter_12/*/
 
-    //https://raw.githubusercontent.com/alignedleft/d3-book/master/chapter_12/
-
-    console.log( $.get('https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson',
-                       function(data) {
-                         //alert(data);
-                         console.log(data);
-                                    }
-                      )
-    )
+/*
     //this not works on github pages.. not sure why yet
-    //d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",
+    //d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",*/
     d3.json("https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson",
     function(error, data){
-        // console.log the data
+        /*// console.log the data*/
         alert(error);
         console.log(data);
 
-        // create a unit projection
+        /*// create a unit projection*/
         var projection = d3.geo.mercator()
             .scale(1)
             .translate([0,0]);
@@ -197,28 +190,28 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
             .pointRadius(function(d) {
               console.log(d);
               return 2;
-            //  return d.properties.mag;
+          /*  //  return d.properties.mag;*/
             });
 
-        // compute bounds of a point of interest, then derive scale and translate
+        /*// compute bounds of a point of interest, then derive scale and translate*/
         var b = path.bounds(data),
             s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
             t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
 
-        // update the projection to use computed scale and translate....
+      /*  // update the projection to use computed scale and translate....*/
         projection
             .scale(s)
             .translate(t);
 
 
-        // calculate and draw a bounding box for the geojson
+      /*  // calculate and draw a bounding box for the geojson */
         svg.append("rect")
             .attr('width', width)
             .attr('height', height)
             .style('stroke', 'black')
             .style('fill', '#dfd');
 
-        // draw the svg of both the geojson and bounding box
+      /*  // draw the svg of both the geojson and bounding box */
         svg.selectAll("path").data(data.features).enter().append("path")
             .attr("d", path)
             .style("fill", "#009926")
