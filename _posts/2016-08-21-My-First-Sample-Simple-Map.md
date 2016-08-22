@@ -156,7 +156,14 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
     // load geojson and do stuff in a callback function...
     //Fixed projection to be closer to what we see on GeoSampa
     console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
-    d3.json("{{site.url}}/articlesData/Abastecimento1.geojson", function(error, data){
+
+    //https://raw.githubusercontent.com/alignedleft/d3-book/master/chapter_12/
+
+
+    //this not works on github pages.. not sure why yet
+    d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",
+    d3.json("https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson",
+    function(error, data){
         // console.log the data
         console.log(data);
 
