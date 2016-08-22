@@ -24,11 +24,11 @@ author: i40poster
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
 #
-url: 'http://localhost:4000'
-urlimg: 'http://localhost:4000/images/'
+#url: 'http://localhost:4000'
+#urlimg: 'http://localhost:4000/images/'
 
-#url: 'https://i40poster.github.io/geoFrackerBlog'
-#urlimg: 'https://i40poster.github.io/geoFrackerBlog/images/'
+url: 'https://i40poster.github.io/geoFrackerBlog'
+urlimg: 'https://i40poster.github.io/geoFrackerBlog/images/'
 
 baseurl: ''
 
