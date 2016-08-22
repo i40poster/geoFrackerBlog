@@ -96,6 +96,7 @@ head(coordinates(Abastecimento1inDegrees))
 ```
 
 Expected Result:
+
 ```text
 coords.x1 coords.x2
 [1,] -46.62910 -23.55624
