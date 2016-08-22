@@ -129,6 +129,7 @@ You can test the generated file at: http://geojson.io/
 Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
 # D3.JS Rendering Section
+
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <style> /* set the CSS */
 #viz {
@@ -154,6 +155,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
     // load geojson and do stuff in a callback function...
     //Fixed projection to be closer to what we see on GeoSampa
+    console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
     d3.json("{{site.url}}/articlesData/Abastecimento1.geojson", function(error, data){
         // console.log the data
         console.log(data);
