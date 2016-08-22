@@ -173,8 +173,8 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
     //d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",*/
     d3.json("https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson",
     function(error, data){
-        /*// console.log the data*/
-        alert(error);
+        /*// console.log the data
+        alert(error);*/
         console.log(data);
 
         /*// create a unit projection*/
@@ -221,7 +221,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
     /* code reused from the following stackoverflow question:
                   http://stackoverflow.com/questions/14492284/center-a-map-in-d3-given-a-geojson-object
  // draw the svg of both the geojson and bounding box
-// calculate and draw a bounding box for the geojson 
+// calculate and draw a bounding box for the geojson
                   */
 
 </script>
