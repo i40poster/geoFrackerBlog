@@ -8,11 +8,11 @@
 #                                                 /____/
 #
 # Title of your website
-title: "Feeling Responsive"
+title: "GeoFracker Blog"
 
 
 # The slogan describes your website and is used on homepage in <title> and other important places
-slogan: "A Flexible Theme for Jekyll"
+slogan: "Fracking GeoData into Insights..."
 
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
@@ -20,11 +20,16 @@ description: "The description is used on homepage and in the footer to quickly d
 
 # Main author of the website
 # See > authors.yml
-author: kx.it4poster@gmail.com
+author: i40poster
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
 #
-url: 'https://i40poster.github.io/geoFrackerBlog/'
+url: 'http://localhost:4000'
+urlimg: 'http://localhost:4000/images/'
+
+#url: 'https://i40poster.github.io/geoFrackerBlog'
+#urlimg: 'https://i40poster.github.io/geoFrackerBlog/images/'
+
 baseurl: ''
 
 # This is for the editing function in _/includes/improve_content
@@ -37,7 +42,6 @@ improve_content: https://i40poster.github.io/geoFrackerBlog/edit/gh-pages
 # Example: <img src="{{ site.urlimg }}{{ post.image.title }}" />
 # Markdown-Example for posts ![Image Text]({{ site.urlimg }}image.jpg)
 #
-urlimg: 'https://i40poster.github.io/geoFrackerBlog/images/'
 
 
 # Logo size is 600x80 pixels
@@ -54,8 +58,14 @@ paginate_path: "blog/page:num"
 
 # Theme works best with Kramdown (using the table of contents function)
 markdown: kramdown
+#markdown: redcarpet
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
 permalink: /:categories/:title/
-highlight: rouge
+#highlight: rouge
 gems: [jekyll-paginate]
 excerpt_separator: "<!--more-->"
 include: ['.htaccess']
@@ -101,7 +111,7 @@ defaults:
     values:
       show_meta: false 	# Hide metadata for all pages
       # sidebar:    		# Possible values › left, right › by default there will be no sidebar
-      comments: true
+      comments: false
       author: i40poster     # Default author for pages
   -
     scope:
@@ -110,7 +120,7 @@ defaults:
     values:
       show_meta: true   # Show metadata for all posts
       # sidebar:        # Possible values › left, right › by default there will be no sidebar
-      comments: true
+      comments: false
       author: i40poster     # Default author for posts
 
 

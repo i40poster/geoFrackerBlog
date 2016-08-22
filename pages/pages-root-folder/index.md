@@ -6,22 +6,22 @@
 #
 layout: frontpage
 header:
-  image_fullwidth: you-can-delete-me-header.png
+  #image_fullwidth: you-can-delete-me-header.png
 widget1:
-  title: "Widget 1"
-  url: 'http://domain.de/must-be-absolut-url-like-this-one/'
-  image: 'http://dummyimage.com/302x183/334d5c/efc94c.png&text=Placeholder'
-  text: ''
+  title: "geoFrackerBlog"
+  url: 'https://i40poster.github.io/geoFrackerBlog/'
+  #image: 'http://dummyimage.com/302x183/334d5c/efc94c.png&text=Placeholder'
+  text: 'This blog will explore a set of data sets and how handle OpenData to collect some insights on how to use R and other technologies to help you to learn with data'
 widget2:
-  title: "Widget 2"
-  url: 'http://domain.de/must-be-absolut-url-like-this-one/'
-  image: 'http://dummyimage.com/302x183/334d5c/efc94c.png&text=Placeholder'
-  text: ''
+  title: "geoFracker"
+  url: 'https://github.com/i40poster/geoFracker/'
+  #image: 'http://dummyimage.com/302x183/334d5c/efc94c.png&text=Placeholder'
+  text: 'The basic workbench for fracking Spatial Dataframes, a extended version of RStudio to help you to explore data'
 widget3:
-  title: "Widget 3"
-  url: 'http://domain.de/must-be-absolut-url-like-this-one/'
-  image: 'http://dummyimage.com/302x183/334d5c/efc94c.png&text=Placeholder'
-  text: ''
+  title: "geoSampaRHelper"
+  url: 'https://github.com/i40poster/geoSampaRHelper/'
+  #image: 'http://dummyimage.com/302x183/334d5c/efc94c.png&text=Placeholder'
+  text: 'A basic set of tools to add to your geoFracker to allow you to process the São Paulo City Hall Open data'
 #
 # Use the call for action to show a button on the frontpage
 #
@@ -32,10 +32,11 @@ widget3:
 # to use the main color or success, alert or secondary.
 # To change colors see sass/_01_settings_colors.scss
 #
-callforaction:
-  url: https://tinyletter.com/feeling-responsive
-  text: Inform me about new updates and features ›
-  style: alert
+
+#callforaction:
+#  url: https://tinyletter.com/feeling-responsive
+#  text: Inform me about new updates and features ›
+#  style: alert
 permalink: /index.html
 ---
 <div id="videoModal" class="reveal-modal large" data-reveal="">

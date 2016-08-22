@@ -11,4 +11,10 @@ phlow: # replace this with your info
   uri: http://phlow.de/
   email:
   twitter: "@phlow"
+i40poster: # replace this with your info
+  name: "i40poster"
+  siterole: "Data Explorer, Developer, Solution Architect, ... "
+  uri:
+  email: kx.it4poster@gmail.com
+  twitter:
 # you can add more authors here
