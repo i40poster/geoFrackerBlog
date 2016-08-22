@@ -147,7 +147,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
               http://stackoverflow.com/questions/14492284/center-a-map-in-d3-given-a-geojson-object */
     var width = 900,
         height = 900;
-
+    console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
     var svg = d3.select("#viz").append("svg")
         .attr("width", width)
         .attr("height", height)
