@@ -202,7 +202,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
 </script>
 
-Site URL: {{url}}
+Site URL: {{site.url}}
 
 
 
