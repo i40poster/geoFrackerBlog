@@ -183,7 +183,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
             .scale(1)
             .translate([0,0]);
 
-        // create a path generator.
+        /*// create a path generator.*/
         console.log( d3.geo.path());
         var path = d3.geo.path()
             .projection(projection)
