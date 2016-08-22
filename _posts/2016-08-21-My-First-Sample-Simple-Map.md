@@ -152,6 +152,14 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
     var width = 900,
         height = 900;
     console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
+
+    $.get('https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson',
+                      function(data) {
+                        //alert(data);
+                        console.log(data);
+                                   }
+                     )
+
     var svg = d3.select("#viz").append("svg")
         .attr("width", width)
         .attr("height", height)
