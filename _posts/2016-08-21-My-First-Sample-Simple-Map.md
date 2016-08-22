@@ -188,7 +188,6 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
         var path = d3.geo.path()
             .projection(projection)
             .pointRadius(function(d) {
-              //console.log(d);
               return 2;
           /*  //  return d.properties.mag;*/
             });
