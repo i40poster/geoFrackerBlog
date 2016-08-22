@@ -230,6 +230,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 </script>
 
 Site URL: {{site.url}}
+
 Data Source: {{site.url}}/articlesData/Abastecimento1.geojson
 
 
