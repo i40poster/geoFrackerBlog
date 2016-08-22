@@ -154,8 +154,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
     console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
 
     $.get('https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson',
-                      function(data) {
-                        //alert(data);
+                      function(data) {                        
                         console.log(data);
                                    }
                      )
