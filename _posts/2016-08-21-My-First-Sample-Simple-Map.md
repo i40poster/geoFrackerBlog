@@ -130,7 +130,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
 # D3.JS Rendering Section
 
-<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <style> /* set the CSS */
 #viz {
     margin: 0;
