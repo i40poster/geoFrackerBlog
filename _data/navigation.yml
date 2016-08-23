@@ -5,16 +5,16 @@
   url: "/"
   side: left
 
-- title: "Dropdown Menu"
+- title: "Guides"
   url: "#"
   side: left
   dropdown:
-  - title: "Dropdown Menu 1"
-    url: "#"
-  - title: "Dropdown Menu 2"
-    url: "#"
-  - title: "Dropdown Menu 3"
-    url: "#"
+  - title: "Workbench Setup"
+    url: "/RStudioSetup"
+#  - title: "Dropdown Menu 2"
+#    url: "#"
+#  - title: "Dropdown Menu 3"
+#    url: "#"
 
 - title: Blog
   url: "/blog/"
