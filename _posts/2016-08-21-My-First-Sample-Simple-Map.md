@@ -25,6 +25,7 @@ image:
 # Test mix HTML and HTML
 
 ## Running your RStudio
+
 ```bash
 docker run -d -p 8790:8787 --name r_workbench it4poster/geofracker
 
@@ -108,6 +109,7 @@ coords.x1 coords.x2
 ```
 
 ## Exporting
+
 ```R
 Abastecimento1iDF$lat <- coordinates(Abastecimento1inDegrees)[,2])
 Abastecimento1iDF$long <- coordinates(Abastecimento1inDegrees)[,1])
