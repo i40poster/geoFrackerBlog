@@ -48,7 +48,7 @@ geojson_write( Population1inDegrees, lat = Population1inDegrees[,2], lon = Popul
 ```
 
 
-File Saved at: /home/rstudio/Abastecimento1
+File Saved at: /home/rstudio/populationSP.geojson
 Copying it to your machine:
 
 ```bash
