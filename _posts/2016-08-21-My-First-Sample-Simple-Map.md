@@ -118,6 +118,7 @@ geojson_write(Abastecimento1iDF, lat = 'Abastecimento1iDF_Lat', lon = 'Abastecim
 
 File Saved at: /home/rstudio/Abastecimento1
 Copying it to your machine:
+
 ```bash
 docker cp r_workbench:/home/rstudio/Abastecimento1.geojson ~/Downloads/
 ```
@@ -228,12 +229,6 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
                   */
 
 </script>
-
-Site URL: {{site.url}}
-
-Data Source: {{site.url}}/articlesData/Abastecimento1.geojson
-
-
 
 # References:
 http://geojson.io/
