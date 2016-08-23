@@ -76,11 +76,20 @@ You can test the generated file at: http://geojson.io/
     var width = 630,
         height = 900;
     console.log("{{site.url}}/articlesData/populationSP.geojson");
-
+/*
     var svg = d3.select("#viz").append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("class", "svg");
+*/
+
+  var svg = d3.select("#viz").append("svg")
+  .attr("width", width)
+  .attr("height", height)
+      .call(d3.behavior.zoom().on("zoom", function () {
+        svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+      }))
+      .append("g");
 
     d3.json("{{site.url}}/articlesData/populationSP.geojson",
     function(error, data){
@@ -140,9 +149,12 @@ You can test the generated file at: http://geojson.io/
 
     });
 
+
+
 </script>
 
 # References:
 http://geojson.io/
 https://cran.r-project.org/web/packages/geojsonio/README.html
 http://www.dummies.com/how-to/content/how-to-create-a-data-frame-from-scratch-in-r.html
+http://bl.ocks.org/sgruhier/1d692762f8328a2c9957
