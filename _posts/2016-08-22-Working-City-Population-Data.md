@@ -73,7 +73,6 @@ You can test the generated file at: http://geojson.io/
 
 <div id="viz"></div>
 <script>
-
     var width = 630,
         height = 900;
     console.log("{{site.url}}/articlesData/populationSP.geojson");
@@ -93,7 +92,6 @@ You can test the generated file at: http://geojson.io/
             .projection(projection)
             .pointRadius(function(d) {
               return 2;
-          /*  //  return d.properties.mag;*/
             });
 
 
@@ -124,17 +122,17 @@ You can test the generated file at: http://geojson.io/
               NA - Color 5  #5e3c99
               */
               if(  d.properties.habit_hect == null)
-                return '#5e3c99'
+                return '#5e3c99';
               else if(  d.properties.habit_hect >= 0 && d.properties.habit_hect <= 55)
-                return  '#fee5d9'
+                return  '#fee5d9';
               else if(  d.properties.habit_hect > 55 && d.properties.habit_hect <= 126)
-                  return  '#fcae91'
+                  return  '#fcae91';
               else if(  d.properties.habit_hect > 126 && d.properties.habit_hect <= 204)
-                  return  '#fb6a4a'
+                  return  '#fb6a4a';
               else if(  d.properties.habit_hect > 204 )
-                  return  '#cb181d'
+                  return  '#cb181d';
               else
-                return '#5e3c99'
+                return '#5e3c99';
 
             } )
             .style("stroke-width", "1")
