@@ -11,6 +11,8 @@ tags:
   - Edifications
   - Buildings
   - Polygons
+
+permalink: /RStudioSetupV2
 ---
 
 Before we start, did you have followed the setup steps described at [here]({{site.url}}/RStudioSetup)
