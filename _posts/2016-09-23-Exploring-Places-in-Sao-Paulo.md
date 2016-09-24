@@ -1,7 +1,7 @@
 ---
 layout: page
 subheadline: "Exploring some services available in São Paulo"
-title: "..."
+title: "Special Buildings - Where they are?"
 teaser: "Marking some special buildings"
 categories:
   - R
