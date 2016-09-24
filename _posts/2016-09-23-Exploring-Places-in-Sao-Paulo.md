@@ -104,7 +104,8 @@ plot(Edificacao1KnownServiceArea,add=T,col='green')
 
 
 # References:
-[1]: http://www.ats.ucla.edu/stat/r/library/advanced_function_r.htm
+
+[]: http://www.ats.ucla.edu/stat/r/library/advanced_function_r.htm
 
 http://www.cookbook-r.com/Manipulating_data/Adding_and_removing_columns_from_a_data_frame/
 
