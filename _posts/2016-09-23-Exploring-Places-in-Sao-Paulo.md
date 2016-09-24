@@ -106,3 +106,9 @@ plot(Edificacao1KnownServiceArea,add=T,col='green')
 # References:
 http://www.ats.ucla.edu/stat/r/library/advanced_function_r.htm
 http://www.cookbook-r.com/Manipulating_data/Adding_and_removing_columns_from_a_data_frame/
+https://cran.r-project.org/web/packages/rgeos/rgeos.pdf
+https://www.r-bloggers.com/rgeos-update/
+http://www.nickeubank.com/wp-content/uploads/2015/10/RGIS2_MergingSpatialData_part2_GeometricManipulations.html
+https://www.nceas.ucsb.edu/scicomp/usecases/point-in-polygon
+http://stackoverflow.com/questions/19002744/spover-for-point-in-polygon-analysis-in-r
+http://stackoverflow.com/questions/21971447/check-if-point-is-in-spatial-object-which-consists-of-multiple-polygons-holes
