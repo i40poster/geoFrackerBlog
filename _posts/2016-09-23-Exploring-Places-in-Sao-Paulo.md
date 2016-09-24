@@ -67,6 +67,8 @@ plot(Edificacao1KnownServiceArea,add=T,col='green')
 
 
 Creating a function to mark special buildings
+
+
 ```R
 geofracker.markServiceBuildings <- function(edifications, equipamentosCollection) {
   df <- data.frame(matrix(ncol = 0, nrow = length(Edificacao1)))
