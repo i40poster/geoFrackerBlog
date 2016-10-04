@@ -8,6 +8,9 @@ categories:
 tags:
   - Maps
   - SAO PAULO
+
+
+comments: true
 ---
 
 Before we start, did you have followed the setup steps described at [here]({{site.url}}/RStudioSetup)
@@ -21,7 +24,7 @@ Add the SVG code here
 
 # References:
 
-geofracker.removeServiceBuildings 
+geofracker.removeServiceBuildings
 
 #geofracker.utm2decimalSouth
 

@@ -24,6 +24,8 @@ image:
   #url: "http://phlow.de/"
 
 permalink: /RStudioSetup
+
+comments: true
 ---
 
 # Pre-Requirements

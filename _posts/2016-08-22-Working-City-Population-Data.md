@@ -23,6 +23,9 @@ image:
   #homepage: "you-can-delete-me-homepage.png"
   #caption: "Caption?"
   #url: "http://phlow.de/"
+
+
+comments: true
 ---
 
 Before we start, did you have followed the setup steps described at [here]({{site.url}}/RStudioSetup)

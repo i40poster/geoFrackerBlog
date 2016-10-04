@@ -21,6 +21,9 @@ image:
   #homepage: "you-can-delete-me-homepage.png"
   #caption: "Caption?"
   #url: "http://phlow.de/"
+
+
+comments: true
 ---
 # Test mix HTML and HTML
 
