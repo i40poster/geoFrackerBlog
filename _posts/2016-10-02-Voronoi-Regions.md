@@ -9,6 +9,8 @@ tags:
   - Maps
   - SAO PAULO
   - Voronoi
+
+comments: true
 ---
 
 Before we start, did you have followed the setup steps described at [here]({{site.url}}/RStudioSetupV2)
