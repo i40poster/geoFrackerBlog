@@ -1,102 +1,33 @@
 ---
 layout: page
-#
-# Content
-#
-subheadline: "Sample Map Rendering"
-title: "My first Map"
-teaser: "Full sample of starting from scratch up to a GeoJSON file"
+subheadline: "Exploring Plotting of GEOJSON"
+title: "Ploting some polygons in GeoJSON"
+teaser: "...DRAFT..."
 categories:
   - R
-  - GeoJSON
 tags:
   - Maps
   - SAO PAULO
-#
-# Styling
-#
-image:
-  #header: ""
-  #thumb: "you-can-delete-me-thumb.png"
-  #homepage: "you-can-delete-me-homepage.png"
-  #caption: "Caption?"
-  #url: "http://phlow.de/"
 
 
 comments: true
 ---
-# Test mix HTML and HTML
 
-## Running your RStudio
+Before we start, did you have followed the setup steps described at [here]({{site.url}}/RStudioSetup)
 
-```bash
-docker run -d -p 8790:8787 --name r_workbench it4poster/geofracker
+# Let's explore data
 
-##Open your browser at your docker host IP at port 8790
-# Ususally for mac or windows: http://192.168.99.100:8790
-# if you are using docker machine
-# For linux user, usually: http://<your ip>:8790
-# or: http://127.0.0.1:8790
 
-```
-At you your browser you will see a login page, for login use:
-User: rstudio
-Password: rstudio
-
-Now execute the following:
 
 ```R
-#!/usr/bin/env Rscript
-install.packages("rgeos")
-install.packages("rgdal")
-# raster install not working
-install.packages('raster',  repos='http://cran.us.r-project.org')
-install.packages('ncdf4')
-install.packages("xlsx")
-install.packages("ggmap")
-library(raster)
-library(rgdal)
 
-# installing dowload helper
-## 1. install
-install.packages("devtools")
-library(devtools)
-devtools::install_github("i40poster/geoSampaRHelper")
-
-# using dowload helper
-## 2 .Sample of use:
-library(helper4geosampa)
-
-# To conver GeoJSON
-install.packages("geojsonio")
-library("geojsonio")
-
-```
-# Exploring a sample data:
-Source: http://geosampa.prefeitura.sp.gov.br/
-
-```R
-Abastecimento = downloadAndUnzipShp("http://geosampa.prefeitura.sp.gov.br/PaginasPublicas/downloadArquivoOL.aspx?orig=DownloadCamadas&arq=03_Equipamentos%5C%5CAbastecimento%5C%5CShapefile%5C%5CEQUIPAMENTOS_SHP_TEMA_ABASTECIMENTO&arqTipo=Shapefile")
-
-Abastecimento1 <- readOGR(dsn=Abastecimento$dir[1], layer=Abastecimento$shapeclass[1])
-
-#function to convert UTM to Degrees
-
-
-
-
-#geojson_write( us.cities[1:2, ], lat = 'lat', lon = 'long',file = "/home/rstudio/sample.json")
-
-utm2decimalSouth <- function(data,zone,datum){
-    #coordinates(newData) <- c("easting","northing")
-    crs <- paste0("+proj=utm+zone=",zone,"+datum=",datum)
-    data@proj4string@projargs <- paste0("+proj=utm"," +south  +zone=",zone," +datum=",datum)
-    spTransform(data, CRS("+proj=longlat"))}
-
+Edificacao = downloadAndUnzipShp("http://geosampa.prefeitura.sp.gov.br/PaginasPublicas/downloadArquivoOL.aspx?orig=DownloadCamadas&arq=06_Habita%E7%E3o%20e%20Edifica%E7%E3o%5C%5CEdifica%E7%E3o%5C%5CShapefile%5C%5CSHP_edificacao_SE&arqTipo=Shapefile")
+Edificacao1 <- readOGR(dsn=Edificacao$dir[1], layer=Edificacao$shapeclass[1])
+plot(Edificacao1)
 
 #Converting the Coordinates from UTM to Degrees
-Abastecimento1inDegrees <- utm2decimalSouth(Abastecimento1,23,"WGS84")
-head(coordinates(Abastecimento1inDegrees))
+Edificacao1inDegrees <-  geofracker.utm2decimalSouth(Abastecimento1,23,"WGS84")
+head(coordinates(Edificacao1inDegrees))
 ```
 
 Expected Result:
@@ -114,22 +45,43 @@ coords.x1 coords.x2
 ## Exporting
 
 ```R
+name <- "Edification1"
+writeOGR(Edificacao1inDegrees, paste0(name, '.geojson'), name, driver='GeoJSON')
 
+#force projection data(because we know that this is the used on the original data)
+Edificacao1@proj4string@projargs <- paste0("+proj=utm"," +south  +zone=",23," +datum=","WGS84")
+#transform
+spTransform(Edificacao1, CRS("+proj=longlat"))
+writeOGR(Edificacao1, paste0(name, '.geojson'), name, driver='GeoJSON')
+
+```
+
+# Extra commands
+```R
+geofracker.utm2decimalSouth <- function(data,zone,datum){
+    #coordinates(newData) <- c("easting","northing")
+    crs <- paste0("+proj=utm+zone=",zone,"+datum=",datum)
+    data@proj4string@projargs <- paste0("+proj=utm"," +south  +zone=",zone," +datum=",datum)
+    spTransform(data, CRS("+proj=longlat"))}
+
+
+# Extra code:
 # Lat, Long, Data
-Abastecimento1iDF <- data.frame(coordinates(Abastecimento1inDegrees)[,2], coordinates(Abastecimento1inDegrees)[,1], Abastecimento1inDegrees$eq_nome )
+Edificacao1iDF <- data.frame(coordinates(Edificacao1inDegrees)[,2], coordinates(Edificacao1inDegrees)[,1], Edificacao1inDegrees$eq_id )
 
 #Abastecimento1iDF <- data.frame(Abastecimento1iDF_Lat, Abastecimento1iDF_Long, Abastecimento1iDF$variable )
 # Renaming
 # http://stackoverflow.com/questions/7531868/how-to-rename-a-single-column-in-a-data-frame-in-r
-colnames(Abastecimento1iDF) = c("lat","long","data")
-geojson_write(Abastecimento1iDF, lat = 'lat', lon = 'long',file = "/home/rstudio/Abastecimento1")
+colnames(Edificacao1iDF) = c("lat","long","data")
+geojson_write(Edificacao1iDF, lat = 'lat', lon = 'long',file = "/home/rstudio/Edification1")
+
 ```
 
 File Saved at: /home/rstudio/Abastecimento1
 Copying it to your machine:
 
 ```bash
-docker cp r_workbench:/home/rstudio/Abastecimento1.geojson ~/Downloads/
+docker cp r_workbench:/home/rstudio/Edification1.geojson ~/Downloads/
 ```
 
 You can test the generated file at: http://geojson.io/
@@ -137,7 +89,6 @@ You can test the generated file at: http://geojson.io/
 ![GEOJSON Sample]({{site.url}}/images/20160821.SampleGeoJSON.png)
 
 
-Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
 # D3.JS Rendering Section
 
@@ -157,7 +108,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 
     var width = 900,
         height = 900;
-    console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
+    console.log("{{site.url}}/articlesData/Edification1.geojson");
 
 /*
     $.get('https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson',
@@ -175,7 +126,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 /*
     // load geojson and do stuff in a callback function...
     //Fixed projection to be closer to what we see on GeoSampa*/
-    console.log("{{site.url}}/articlesData/Abastecimento1.geojson");
+    console.log("{{site.url}}/articlesData/Edification1.geojson");
 /*
     //https://raw.githubusercontent.com/alignedleft/d3-book/master/chapter_12/*/
 
@@ -184,7 +135,7 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
     //d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",
     d3.json("https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson",*/
 
-    d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",
+    d3.json("{{site.url}}/articlesData/Edification1.geojson",
     function(error, data){
         /*// console.log the data
         alert(error);*/
@@ -240,6 +191,9 @@ Reference: https://cran.r-project.org/web/packages/geojsonio/README.html
 </script>
 
 # References:
-http://geojson.io/
-https://cran.r-project.org/web/packages/geojsonio/README.html
-http://www.dummies.com/how-to/content/how-to-create-a-data-frame-from-scratch-in-r.html
+
+geofracker.removeServiceBuildings
+
+#geofracker.utm2decimalSouth
+
+#geofracker.utm2decimalNorth
