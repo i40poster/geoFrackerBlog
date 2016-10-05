@@ -13,7 +13,7 @@ tags:
 comments: true
 ---
 
-Before we start, did you have followed the setup steps described at [here]({{site.url}}/RStudioSetup)
+Before we start, did you have followed the setup steps described at [here]({{site.url}}/RStudioSetupV2)
 
 # Let's explore data
 
@@ -28,18 +28,6 @@ plot(Edificacao1)
 #Converting the Coordinates from UTM to Degrees
 Edificacao1inDegrees <-  geofracker.utm2decimalSouth(Abastecimento1,23,"WGS84")
 head(coordinates(Edificacao1inDegrees))
-```
-
-Expected Result:
-
-```
-coords.x1 coords.x2
-[1,] -46.62910 -23.55624
-[2,] -46.61584 -23.53899
-[3,] -46.62229 -23.57894
-[4,] -46.70011 -23.52669
-[5,] -46.60064 -23.55279
-[6,] -46.59940 -23.54647
 ```
 
 ## Exporting
@@ -85,14 +73,16 @@ docker cp r_workbench:/home/rstudio/Edification1.geojson ~/Downloads/
 ```
 
 You can test the generated file at: http://geojson.io/
-20160821.SampleGeoJSON.png
-![GEOJSON Sample]({{site.url}}/images/20160821.SampleGeoJSON.png)
+> not working!
 
 
 
 # D3.JS Rendering Section
+> Not working!
 
 <script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+
 <style> /* set the CSS */
 #viz {
     margin: 0;
@@ -135,52 +125,25 @@ You can test the generated file at: http://geojson.io/
     //d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",
     d3.json("https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson",*/
 
-    d3.json("{{site.url}}/articlesData/Edification1.geojson",
-    function(error, data){
-        /*// console.log the data
-        alert(error);*/
-        console.log(data);
-
-        /*// create a unit projection*/
-        var projection = d3.geo.mercator()
-            .scale(1)
-            .translate([0,0]);
-
-        /*// create a path generator.*/
-        console.log( d3.geo.path());
-        var path = d3.geo.path()
-            .projection(projection)
-            .pointRadius(function(d) {
-              return 2;
-          /*  //  return d.properties.mag;*/
-            });
-
-        /*// compute bounds of a point of interest, then derive scale and translate*/
-        var b = path.bounds(data),
-            s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-            t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
-
-      /*  // update the projection to use computed scale and translate....*/
-        projection
-            .scale(s)
-            .translate(t);
+    console.log(data);
 
 
+    d3.json("{{site.url}}/articlesData/Edification1.geojson", function(map) {
+          var projection = d3.geo.mercator().scale(1).translate([0,0]).precision(0);
+          var path = d3.geo.path().projection(projection);
+          var bounds = path.bounds(map);
 
-        svg.append("rect")
-            .attr('width', width)
-            .attr('height', height)
-            .style('stroke', 'black')
-            .style('fill', '#dfd');
+          var scale = .95 / Math.max((bounds[1][0] - bounds[0][0]) / width,
+              (bounds[1][1] - bounds[0][1]) / height);
+          var transl = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2,
+              (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
+          projection.scale(scale).translate(transl);
 
-
-        svg.selectAll("path").data(data.features).enter().append("path")
+          vis.selectAll("path").data(map.features).enter().append("path")
             .attr("d", path)
-            .style("fill", "#009926")
-            .style("stroke-width", "1")
-            .style("stroke", "#009926")
-
-    });
+            .style("fill", "none")
+            .style("stroke", "black");
+        });
 
     /* code reused from the following stackoverflow question:
                   http://stackoverflow.com/questions/14492284/center-a-map-in-d3-given-a-geojson-object
