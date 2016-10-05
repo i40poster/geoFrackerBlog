@@ -2,7 +2,7 @@
 layout: page
 subheadline: "Exploring Plotting of GEOJSON"
 title: "Ploting some polygons in GeoJSON"
-teaser: "...DRAFT..."
+teaser: "Plotting in SVG Geojson polygons"
 categories:
   - R
 tags:
@@ -39,36 +39,12 @@ writeOGR(Edificacao1Projected, paste0(name, '.geojson'), name, driver='GeoJSON')
 
 ```
 
-# Extra commands
-```R
-geofracker.utm2decimalSouth <- function(data,zone,datum){
-    #coordinates(newData) <- c("easting","northing")
-    crs <- paste0("+proj=utm+zone=",zone,"+datum=",datum)
-    data@proj4string@projargs <- paste0("+proj=utm"," +south  +zone=",zone," +datum=",datum)
-    spTransform(data, CRS("+proj=longlat"))}
-
-
-# Extra code:
-# Lat, Long, Data
-Edificacao1iDF <- data.frame(coordinates(Edificacao1inDegrees)[,2], coordinates(Edificacao1inDegrees)[,1], Edificacao1inDegrees$eq_id )
-
-#Abastecimento1iDF <- data.frame(Abastecimento1iDF_Lat, Abastecimento1iDF_Long, Abastecimento1iDF$variable )
-# Renaming
-# http://stackoverflow.com/questions/7531868/how-to-rename-a-single-column-in-a-data-frame-in-r
-colnames(Edificacao1iDF) = c("lat","long","data")
-geojson_write(Edificacao1iDF, lat = 'lat', lon = 'long',file = "/home/rstudio/Edification1")
-
-```
-
-File Saved at: /home/rstudio/Abastecimento1
+File Saved at: /home/rstudio/Edification1
 Copying it to your machine:
 
 ```bash
 docker cp r_workbench:/home/rstudio/Edification1.geojson ~/Downloads/
 ```
-
-You can test the generated file at: http://geojson.io/
-> not working!
 
 
 
@@ -212,11 +188,28 @@ You can test the generated file at: http://geojson.io/
 </script>
 ```
 
+
+
 # References:
 <http://stackoverflow.com/questions/23953366/d3-large-geojson-file-does-not-show-draw-map-properly-using-projections>
 
-geofracker.removeServiceBuildings
+# Extra commands
+```R
+geofracker.utm2decimalSouth <- function(data,zone,datum){
+    #coordinates(newData) <- c("easting","northing")
+    crs <- paste0("+proj=utm+zone=",zone,"+datum=",datum)
+    data@proj4string@projargs <- paste0("+proj=utm"," +south  +zone=",zone," +datum=",datum)
+    spTransform(data, CRS("+proj=longlat"))}
 
-#geofracker.utm2decimalSouth
 
-#geofracker.utm2decimalNorth
+# Extra code:
+# Lat, Long, Data
+Edificacao1iDF <- data.frame(coordinates(Edificacao1inDegrees)[,2], coordinates(Edificacao1inDegrees)[,1], Edificacao1inDegrees$eq_id )
+
+#Abastecimento1iDF <- data.frame(Abastecimento1iDF_Lat, Abastecimento1iDF_Long, Abastecimento1iDF$variable )
+# Renaming
+# http://stackoverflow.com/questions/7531868/how-to-rename-a-single-column-in-a-data-frame-in-r
+colnames(Edificacao1iDF) = c("lat","long","data")
+geojson_write(Edificacao1iDF, lat = 'lat', lon = 'long',file = "/home/rstudio/Edification1")
+
+```
