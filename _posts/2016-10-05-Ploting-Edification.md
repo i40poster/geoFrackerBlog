@@ -99,7 +99,7 @@ You can test the generated file at: http://geojson.io/
         .attr("height", height)
         .attr("class", "svg");
     console.log("{{site.url}}/articlesData/Edification1.geojson");
-    console.log(data);
+  
 
 
     d3.json("{{site.url}}/articlesData/Edification1.geojson", function(map) {
