@@ -97,7 +97,11 @@ You can test the generated file at: http://geojson.io/
     var svg = d3.select("#viz").append("svg")
         .attr("width", width)
         .attr("height", height)
-        .attr("class", "svg");
+        .attr("class", "svg")
+          .call(d3.behavior.zoom().on("zoom", function () {
+          svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+        }))
+        .append("g");
     console.log("{{site.url}}/articlesData/Edification1.geojson");
 
 
