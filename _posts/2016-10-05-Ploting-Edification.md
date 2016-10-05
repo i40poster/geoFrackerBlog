@@ -73,8 +73,6 @@ You can test the generated file at: http://geojson.io/
 
 
 # D3.JS Rendering Section
-> Not working!
-
 <script src="https://d3js.org/d3.v3.min.js"></script>
 
 <style> /* set the CSS */
@@ -143,6 +141,76 @@ You can test the generated file at: http://geojson.io/
 
 </script>
 
+
+```html
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<style> /* set the CSS */
+#viz {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<div id="viz"></div>
+<script>
+
+    var width = 900,
+        height = 900;
+
+    console.log("{{site.url}}/articlesData/Edification1.geojson");
+
+    var svg = d3.select("#viz").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("class", "svg")
+          .call(d3.behavior.zoom().on("zoom", function () {
+          svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+        }))
+        .append("g");
+    console.log("{{site.url}}/articlesData/Edification1.geojson");
+
+
+
+    d3.json("{{site.url}}/articlesData/Edification1.geojson", function(map) {
+          var projection = d3.geo.mercator().scale(1).translate([0,0]).precision(0);
+          var path = d3.geo.path().projection(projection);
+          var bounds = path.bounds(map);
+
+          var scale = .95 / Math.max((bounds[1][0] - bounds[0][0]) / width,
+              (bounds[1][1] - bounds[0][1]) / height);
+          var transl = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2,
+              (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
+          projection.scale(scale).translate(transl);
+
+          svg.selectAll("path").data(map.features).enter().append("path")
+            .attr("d", path)
+            .style("fill", "none")
+            .style("stroke", "black");
+        });
+
+        d3.json("https://i40poster.github.io/geoFrackerBlog/articlesData/Edification1.geojson", function(map) {
+              var projection = d3.geo.mercator().scale(1).translate([0,0]).precision(0);
+              var path = d3.geo.path().projection(projection);
+              var bounds = path.bounds(map);
+
+              var scale = .95 / Math.max((bounds[1][0] - bounds[0][0]) / width,
+                  (bounds[1][1] - bounds[0][1]) / height);
+              var transl = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2,
+                  (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
+              projection.scale(scale).translate(transl);
+
+              vis.selectAll("path").data(map.features).enter().append("path")
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "black");
+            });
+
+
+</script>
+```
 
 # References:
 <http://stackoverflow.com/questions/23953366/d3-large-geojson-file-does-not-show-draw-map-properly-using-projections>
