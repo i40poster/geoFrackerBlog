@@ -99,7 +99,7 @@ You can test the generated file at: http://geojson.io/
         .attr("height", height)
         .attr("class", "svg");
     console.log("{{site.url}}/articlesData/Edification1.geojson");
-  
+
 
 
     d3.json("{{site.url}}/articlesData/Edification1.geojson", function(map) {
@@ -113,7 +113,7 @@ You can test the generated file at: http://geojson.io/
               (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
           projection.scale(scale).translate(transl);
 
-          vis.selectAll("path").data(map.features).enter().append("path")
+          svg.selectAll("path").data(map.features).enter().append("path")
             .attr("d", path)
             .style("fill", "none")
             .style("stroke", "black");
