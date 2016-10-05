@@ -24,23 +24,18 @@ Before we start, did you have followed the setup steps described at [here]({{sit
 Edificacao = downloadAndUnzipShp("http://geosampa.prefeitura.sp.gov.br/PaginasPublicas/downloadArquivoOL.aspx?orig=DownloadCamadas&arq=06_Habita%E7%E3o%20e%20Edifica%E7%E3o%5C%5CEdifica%E7%E3o%5C%5CShapefile%5C%5CSHP_edificacao_SE&arqTipo=Shapefile")
 Edificacao1 <- readOGR(dsn=Edificacao$dir[1], layer=Edificacao$shapeclass[1])
 plot(Edificacao1)
-
-#Converting the Coordinates from UTM to Degrees
-Edificacao1inDegrees <-  geofracker.utm2decimalSouth(Abastecimento1,23,"WGS84")
-head(coordinates(Edificacao1inDegrees))
 ```
 
 ## Exporting
 
 ```R
-name <- "Edification1"
-writeOGR(Edificacao1inDegrees, paste0(name, '.geojson'), name, driver='GeoJSON')
 
 #force projection data(because we know that this is the used on the original data)
 Edificacao1@proj4string@projargs <- paste0("+proj=utm"," +south  +zone=",23," +datum=","WGS84")
 #transform
-spTransform(Edificacao1, CRS("+proj=longlat"))
-writeOGR(Edificacao1, paste0(name, '.geojson'), name, driver='GeoJSON')
+Edificacao1Projected <- spTransform(Edificacao1, CRS("+proj=longlat"))
+name <- "Edification1"
+writeOGR(Edificacao1Projected, paste0(name, '.geojson'), name, driver='GeoJSON')
 
 ```
 
@@ -81,7 +76,6 @@ You can test the generated file at: http://geojson.io/
 > Not working!
 
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="https://d3js.org/topojson.v1.min.js"></script>
 
 <style> /* set the CSS */
 #viz {
@@ -95,9 +89,9 @@ You can test the generated file at: http://geojson.io/
 <div id="viz"></div>
 <script>
 
-
     var width = 900,
         height = 900;
+
     console.log("{{site.url}}/articlesData/Edification1.geojson");
 
     var svg = d3.select("#viz").append("svg")
@@ -125,10 +119,29 @@ You can test the generated file at: http://geojson.io/
             .style("stroke", "black");
         });
 
+        d3.json("https://i40poster.github.io/geoFrackerBlog/articlesData/Edification1.geojson", function(map) {
+              var projection = d3.geo.mercator().scale(1).translate([0,0]).precision(0);
+              var path = d3.geo.path().projection(projection);
+              var bounds = path.bounds(map);
+
+              var scale = .95 / Math.max((bounds[1][0] - bounds[0][0]) / width,
+                  (bounds[1][1] - bounds[0][1]) / height);
+              var transl = [(width - scale * (bounds[1][0] + bounds[0][0])) / 2,
+                  (height - scale * (bounds[1][1] + bounds[0][1])) / 2];
+              projection.scale(scale).translate(transl);
+
+              vis.selectAll("path").data(map.features).enter().append("path")
+                .attr("d", path)
+                .style("fill", "none")
+                .style("stroke", "black");
+            });
+
 
 </script>
 
+
 # References:
+<http://stackoverflow.com/questions/23953366/d3-large-geojson-file-does-not-show-draw-map-properly-using-projections>
 
 geofracker.removeServiceBuildings
 
