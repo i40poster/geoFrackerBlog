@@ -100,31 +100,11 @@ You can test the generated file at: http://geojson.io/
         height = 900;
     console.log("{{site.url}}/articlesData/Edification1.geojson");
 
-/*
-    $.get('https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson',
-                      function(data) {
-                        console.log(data);
-                                   }
-                     )
-                     */
-
     var svg = d3.select("#viz").append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr("class", "svg");
-
-/*
-    // load geojson and do stuff in a callback function...
-    //Fixed projection to be closer to what we see on GeoSampa*/
     console.log("{{site.url}}/articlesData/Edification1.geojson");
-/*
-    //https://raw.githubusercontent.com/alignedleft/d3-book/master/chapter_12/*/
-
-/*
-    //this not works on github pages.. not sure why yet
-    //d3.json("{{site.url}}/articlesData/Abastecimento1.geojson",
-    d3.json("https://raw.githubusercontent.com/i40poster/geoFrackerBlog/master/articlesData/Abastecimento1.geojson",*/
-
     console.log(data);
 
 
@@ -145,11 +125,6 @@ You can test the generated file at: http://geojson.io/
             .style("stroke", "black");
         });
 
-    /* code reused from the following stackoverflow question:
-                  http://stackoverflow.com/questions/14492284/center-a-map-in-d3-given-a-geojson-object
- // draw the svg of both the geojson and bounding box
-// calculate and draw a bounding box for the geojson
-                  */
 
 </script>
 
